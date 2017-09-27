@@ -1,4 +1,4 @@
-package Implementation.Medium.GraphTheory;
+package Implementation.Medium.GraphTheory.Bfsshortreach;
 
 import java.io.File;
 import java.util.*;
@@ -27,7 +27,6 @@ public class Bfsshortreach {
             }
             graphs[a0].visit = new boolean[n + 1];
             graphs[a0].edgeMap = new HashMap<>();
-            graphs[a0].cEdge = 6;
             for(int a1 = 0; a1 < m; a1++){
                 int v1 = in.nextInt();
                 int v2 = in.nextInt();
@@ -75,11 +74,9 @@ public class Bfsshortreach {
 class Graph {
     public int n;
     public int m;
-    public int cEdge;
     public Map<Integer, Set<AdjEdge>> edgeMap;
     public boolean[] visit;
     public int startVertex;
-    //    public int[][] vertextMatrix;
     public long[] dis;
 }
 
