@@ -8,7 +8,7 @@ public class Bfsshortreach {
         //input
         Scanner in = null;
         try {
-            in = new Scanner(new File("./resource/Bfsshortreach/input5.1"));
+            in = new Scanner(new File("./resource/Bfsshortreach/input5"));
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -27,16 +27,20 @@ public class Bfsshortreach {
             }
             graphs[a0].visit = new boolean[n + 1];
             graphs[a0].edgeMap = new HashMap<>();
+            graphs[a0].adj = new List[n+1];
             for(int a1 = 0; a1 < m; a1++){
                 int v1 = in.nextInt();
                 int v2 = in.nextInt();
-                if(!graphs[a0].edgeMap.containsKey(v1))
-                    graphs[a0].edgeMap.put(v1, new HashSet<AdjEdge>());
-                graphs[a0].edgeMap.get(v1).add(new AdjEdge(v2,6));
 
-                if(!graphs[a0].edgeMap.containsKey(v2))
-                    graphs[a0].edgeMap.put(v2, new HashSet<AdjEdge>());
-                graphs[a0].edgeMap.get(v2).add(new AdjEdge(v1,6));
+                if(graphs[a0].adj[v1] == null)
+                    graphs[a0].adj[v1] = new ArrayList<>();
+                if(!graphs[a0].adj[v1].contains(v2))
+                    graphs[a0].adj[v1].add(v2);
+
+                if(graphs[a0].adj[v2] == null)
+                    graphs[a0].adj[v2] = new ArrayList<>();
+                if(!graphs[a0].adj[v2].contains(v1))
+                    graphs[a0].adj[v2].add(v1);
             }
             graphs[a0].startVertex = in.nextInt();
         }
@@ -57,13 +61,12 @@ public class Bfsshortreach {
         while(!queue.isEmpty()){
             Integer u = queue.poll();
             graph.visit[u] = true;
-            Set<AdjEdge> adjOfU = graph.edgeMap.get(u);
-            if(adjOfU != null) {
-                for (AdjEdge edge : adjOfU) {
-                    if (!graph.visit[edge.v]) {
-                        if (graph.dis[edge.v] == -1 || graph.dis[edge.v] > graph.dis[u] + edge.dis)
-                            graph.dis[edge.v] = graph.dis[u] + edge.dis;
-                        queue.add(edge.v);
+            if(graph.adj[u] != null) {
+                for (int v : graph.adj[u]) {
+                    if (!graph.visit[v]) {
+                        if (graph.dis[v] == -1 || graph.dis[v] > graph.dis[u] + 6)
+                            graph.dis[v] = graph.dis[u] + 6;
+                        queue.add(v);
                     }
                 }
             }
@@ -75,6 +78,7 @@ class Graph {
     public int n;
     public int m;
     public Map<Integer, Set<AdjEdge>> edgeMap;
+    public List<Integer>[] adj;
     public boolean[] visit;
     public int startVertex;
     public long[] dis;
@@ -87,15 +91,15 @@ class AdjEdge{
         this.v = v;
         this.dis = dis;
     }
-    @Override
-    public int hashCode(){
-        return this.v;
-    }
-
-    @Override
-    public boolean equals(Object obj){
-        return this.v == ((AdjEdge)obj).v ? true : false;
-    }
+//    @Override
+//    public int hashCode(){
+//        return this.v;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj){
+//        return this.v == ((AdjEdge)obj).v ? true : false;
+//    }
 }
 
 

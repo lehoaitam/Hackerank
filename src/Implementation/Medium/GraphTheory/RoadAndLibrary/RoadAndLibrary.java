@@ -12,6 +12,7 @@ public class RoadAndLibrary {
         }catch(Exception e){
             e.printStackTrace();
         }
+        //        Scanner in = new Scanner(System.in);
         int q = in.nextInt();
         Graph graphs[]  = new Graph[q];
         for(int a0 = 0; a0 < q; a0++){
