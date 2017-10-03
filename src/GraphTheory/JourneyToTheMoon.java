@@ -1,4 +1,4 @@
-package Implementation.Medium.GraphTheory;
+package GraphTheory;
 
 import java.io.File;
 import java.util.*;

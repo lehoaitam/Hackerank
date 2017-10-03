@@ -1,4 +1,4 @@
-package Implementation.Medium.GraphTheory.Bfsshortreach;
+package GraphTheory.Bfsshortreach;
 
 import java.io.File;
 import java.util.*;

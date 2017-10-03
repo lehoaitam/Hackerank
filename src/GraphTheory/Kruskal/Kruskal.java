@@ -1,4 +1,4 @@
-package Implementation.Medium.GraphTheory.Kruskal;
+package GraphTheory.Kruskal;
 
 import java.io.File;
 import java.util.Arrays;

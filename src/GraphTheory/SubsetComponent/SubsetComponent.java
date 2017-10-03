@@ -1,4 +1,4 @@
-package Implementation.Medium.GraphTheory.SubsetComponent;
+package GraphTheory.SubsetComponent;
 
 import java.io.File;
 import java.math.BigInteger;
