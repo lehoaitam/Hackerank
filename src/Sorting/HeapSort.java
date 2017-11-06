@@ -12,25 +12,24 @@ public class HeapSort {
         for(int i = n/2 -1; i >= 0; i--)
             heapify(arr, n, i);
         //extract heap
-        while(n >= 0){
-            swap(arr, n-1, 0);
-            n--;
-            heapify(arr, n , 0);
+        int i = n-1;
+        while(i >= 0){
+            swap(arr, i, 0);
+            i--;
+            heapify(arr, i , 0);
         }
     }
     private static void heapify(int[] arr, int n, int i){
         int childL = i * 2 + 1;
         int childR = i * 2 + 2;
-        if(childL < n && childR < n){
-            int largest = i;
-            if(arr[i] < arr[childL])
-                largest = childL;
-            if(arr[largest] < arr[childR])
-                largest = childR;
-            if(largest != i){
-                swap(arr, largest, i);
-                heapify(arr, n, largest);
-            }
+        int largest = i;
+        if(childL < n && arr[i] < arr[childL])
+            largest = childL;
+        if(childR < n && arr[largest] < arr[childR])
+            largest = childR;
+        if(largest != i){
+            swap(arr, largest, i);
+            heapify(arr, n, largest);
         }
     }
     private static void swap(int[] arr, int i, int j){

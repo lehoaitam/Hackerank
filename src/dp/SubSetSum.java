@@ -4,12 +4,19 @@ public class SubSetSum {
     static int countnaive = 0;
     static int countdp = 0;
     public static void main(String[] agrs){
-        int[] arr = {1, 2, 3, 4, 5, 6};
+        int[] arr = {8, 9, 6, 7, 1, 2,3};
         int sum = 7;
-//        System.out.println(sol(arr,arr.length-1, sum));
-//        System.out.println("countnaive" + countnaive);
-        System.out.println(dp_sol(arr, sum));
-//        System.out.println("countnaive" + countdp);
+
+//        System.out.println(dp_sol(arr, sum));
+        Double a = 1.0, b = 2.0;
+        func(a,b);
+        System.out.println(a + "," + b);
+    }
+
+    public static void func(Double a, Double b){
+        a = 5.0;
+        b = 10.0;
+        System.out.println(a + "," + b);
     }
 
     private static boolean sol(int[] arr, int i, int sum){

@@ -2,7 +2,7 @@ package Sorting;
 
 public class MergeSort {
     public static void main(String[] args){
-        int[] arr = {4,4,4,4,4};
+        int[] arr = {4,5,1,3,9,7,0,3};
         mergesort(arr, 0, arr.length-1);
         print(arr);
     }
