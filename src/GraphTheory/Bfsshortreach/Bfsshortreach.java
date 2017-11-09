@@ -26,7 +26,6 @@ public class Bfsshortreach {
                 graphs[a0].dis[i] = -1;
             }
             graphs[a0].visit = new boolean[n + 1];
-            graphs[a0].edgeMap = new HashMap<>();
             graphs[a0].adj = new List[n+1];
             for(int a1 = 0; a1 < m; a1++){
                 int v1 = in.nextInt();
@@ -77,29 +76,10 @@ public class Bfsshortreach {
 class Graph {
     public int n;
     public int m;
-    public Map<Integer, Set<AdjEdge>> edgeMap;
     public List<Integer>[] adj;
     public boolean[] visit;
     public int startVertex;
     public long[] dis;
-}
-
-class AdjEdge{
-    public int v;
-    public long dis;
-    public AdjEdge(int v, long dis){
-        this.v = v;
-        this.dis = dis;
-    }
-//    @Override
-//    public int hashCode(){
-//        return this.v;
-//    }
-//
-//    @Override
-//    public boolean equals(Object obj){
-//        return this.v == ((AdjEdge)obj).v ? true : false;
-//    }
 }
 
 
