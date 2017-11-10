@@ -1,9 +1,31 @@
+import java.io.File;
+import java.util.Scanner;
+
 public class temp {
     public static void main(String[] args){
-        int[] a = {2,6,8,10,35,47};
-        //System.out.println(bs(a,7));
-        for(int i = 0; i < 50; i++)
-            System.out.println(i + " : " + bs(a,i));
+        Scanner in = null;
+        try {
+            in = new Scanner(new File("./resource/CoinChange/sampleinput1"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+//        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int coins[] = new int[m];
+        for(int coins_i=0; coins_i < m; coins_i++){
+            coins[coins_i] = in.nextInt();
+        }
+        //solution
+        long[] dp = new long[n+1];
+        dp[0] = 1;
+        for(int coin : coins){
+            for(int i = coin; i <= n; i++){
+                dp[i] = dp[i] + dp[i - coin];
+            }
+        }
+        System.out.println(dp[n]);
+
     }
 
     public static int bs(int[] a, int v){
