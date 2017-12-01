@@ -1,0 +1,63 @@
+public static void main(String[] args){
+    //iterate a map.
+    Map<Integer, Integer> map = new LinkedHashMap<>();
+    map.put(1,1);
+    map.put(2,2);
+    map.put(3,3);
+
+    Set entrySet = map.entrySet();
+    Iterator iter = set.iterator();
+    while(iter.hasNext()){
+        Entry e = (Entry)iter.next();
+        System.out.println(e.getKey() + e.getValue());
+    }
+
+    //sorting native array
+    int[] arr = {1,2,3,4,5};
+    Arrays.sort(arr);
+
+    //sorting a list
+    List<Integer> list = new ArrayList<>();
+    list.add(1);
+    list.add(2);
+    list.add(3);
+
+    Collections.sort(list);
+
+    //comparator
+    Collections.sort(list, new Comparator<Integer>(){
+        @Override
+        int compareTo(Integer a, Integer b){
+            return a > b ? 1 : -1;
+        }
+    });
+
+
+    //Stack
+    Stack<Integer> stack = new Stack();
+    stack.pop();
+    stack.push();
+    stack.peek();
+
+    //Queue
+    Queue<Integer> queue = new LinkedList<>();
+
+    //synchronize List
+    List<Integer> list = Collections.synchronizedList(new ArrayList<Integer>());
+
+    list.add(1);
+    list.add(2);
+    list.add(3);
+
+    synchronized(list){
+        Iterator<Integer> it = list.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    }
+
+    //lru cache implementation
+
+    https://www.programcreek.com/2013/03/leetcode-lru-cache-java/
+
+}
