@@ -1,30 +1,35 @@
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class temp {
     public static void main(String[] args){
         Scanner in = null;
         try {
-            in = new Scanner(new File("./resource/CoinChange/sampleinput1"));
+            in = new Scanner(new File("./resource/temp"));
         }catch(Exception e){
             e.printStackTrace();
         }
 //        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int m = in.nextInt();
-        int coins[] = new int[m];
-        for(int coins_i=0; coins_i < m; coins_i++){
-            coins[coins_i] = in.nextInt();
+        int N, Q;
+        N = in.nextInt();
+        Map<String, Integer> map = new HashMap<>();
+        for(int i=0; i<N; i++){
+            String str = in.next();
+            int count = 0;
+            if(map.containsKey(str))
+                count = map.get(str);
+            map.put(str, count+1);
         }
-        //solution
-        long[] dp = new long[n+1];
-        dp[0] = 1;
-        for(int coin : coins){
-            for(int i = coin; i <= n; i++){
-                dp[i] = dp[i] + dp[i - coin];
-            }
+        Q = in.nextInt();
+        for(int i=0; i<Q; i++){
+            String str = in.next();
+            if(map.containsKey(str))
+                System.out.println(map.get(str));
+            else
+                System.out.println(0);
         }
-        System.out.println(dp[n]);
 
     }
 
